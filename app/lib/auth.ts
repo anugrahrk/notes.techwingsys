@@ -2,11 +2,11 @@ import CredentialsProvider  from 'next-auth/providers/credentials'
 import GoogleProvider from 'next-auth/providers/google'
 import bcrypt from 'bcryptjs'
 import { prisma } from '../../lib/prisma'
-import { email } from 'zod'
 import { Prisma } from '../../generated/prisma/client'
+import { AuthOptions } from 'next-auth'
 
-export const authProvider={
-    provider:[
+export const authOptions:AuthOptions={
+    providers:[
         GoogleProvider({
             clientId:process.env.GOOGLE_CLIENT_ID||"",
             clientSecret:process.env.GOOGLE_CLIENT_SECRET||"",
@@ -68,7 +68,7 @@ export const authProvider={
                 try{
                     const newUserPayload:Prisma.UserCreateInput={
                         email:credentials.email,
-                        password:credentials.password
+                        password:Hashedpassword
                     }
                     const newUser=await prisma.user.create({
                         data:newUserPayload
@@ -85,5 +85,12 @@ export const authProvider={
              return null   
             }
         })
-    ]
+    ],
+    secret:process.env.JWT_SECRET||"secret",
+    callbacks:{
+        async session({session,token}:any){
+            session.user.id=token.sub
+            return session
+        }
+    }
 }
