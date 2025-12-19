@@ -15,10 +15,19 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String?  @unique
-  name  String?
-  password String?
-  provider String?
-  providerAccountId String?
+  id                  Int                  @id @default(autoincrement())
+  email               String?              @unique
+  name                String?
+  password            String?
+  provider            String?
+  providerAccountId   String?
+  passwordResetTokens PasswordResetToken[]
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
 }

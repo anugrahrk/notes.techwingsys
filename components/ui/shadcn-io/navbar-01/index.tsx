@@ -57,6 +57,7 @@ export interface Navbar01Props extends React.HTMLAttributes<HTMLElement> {
   logo?: React.ReactNode;
   logoHref?: string;
   navigationLinks?: Navbar01NavLink[];
+  hamburger:boolean
   signInText?: string;
   signInHref?: string;
   ctaText?: string;
@@ -77,6 +78,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar01Props>(
   (
     {
       className,
+      hamburger=true,
       logoHref = '#',
       navigationLinks = defaultNavigationLinks,
       signInText = 'Sign In',
@@ -138,13 +140,13 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar01Props>(
 
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button
+                 {hamburger&& <Button
                     className="group h-9 w-9 hover:bg-accent hover:text-accent-foreground"
                     variant="ghost"
                     size="icon"
                   >
                     <HamburgerIcon />
-                  </Button>
+                  </Button>}
                 </PopoverTrigger>
                 <PopoverContent align="start" className="w-48 p-2">
                 <NavigationMenu className="max-w-none">
@@ -174,7 +176,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar01Props>(
                 onClick={(e) => e.preventDefault()}
                 className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
-                <span className="hidden font-bold text-xl sm:inline-block">projects.io</span>
+                <span className=" font-bold text-xl sm:inline-block">projects.io</span>
               </button>
              
             </div>

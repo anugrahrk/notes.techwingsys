@@ -8,16 +8,16 @@ import { Button } from "@/components/ui/button"
 
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {signIn} from 'next-auth/react'
+import { signIn, useSession} from 'next-auth/react'
 import AlertDemo from "@/components/alert"
 import { useRouter } from "next/navigation"
+
 
 
 
@@ -28,6 +28,7 @@ export default function CardDemo() {
     const [loading,setLoading]=useState(false)
     const [error,setError]=useState("")
     const router=useRouter()
+    const session=useSession()
     async function Signin(e:React.FormEvent){
         e.preventDefault()
     setLoading(true)
@@ -44,13 +45,16 @@ export default function CardDemo() {
         router.push("/")
     }
 }
+if(session?.data?.user){
+    router.push('/dashboard')
+}
 
 function Googlesignin(){
     signIn('google',{callbackUrl:"/"})
 }
   return (
     <>
-    <div className="flex justify-center">{error!=""? <AlertDemo/>:""}</div>
+    <div className="flex justify-center pt-4">{error!=""? <AlertDemo err={true} message={error}/>:""}</div>
     <Center>
        
         <Card className="w-full max-w-sm">
@@ -76,9 +80,9 @@ function Googlesignin(){
                     <div className="grid gap-2">
                     <div className="flex items-center">
                         <Label htmlFor="password">Password</Label>
-                        <a
-                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                        >
+                       <a
+                        className="ml-auto inline-block text-sm underline-offset-4 hover:underline cursor-pointer"
+                         onClick={()=>router.push('/forgotpassword')}>
                         Forgot your password?
                         </a>
                     </div>

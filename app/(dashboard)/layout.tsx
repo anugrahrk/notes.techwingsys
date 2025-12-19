@@ -1,4 +1,3 @@
-import { Navbar01 } from '@/components/ui/shadcn-io/navbar-01'
 import { getServerSession } from 'next-auth'
 import React from 'react'
 import { authOptions } from '../lib/auth'
@@ -8,9 +7,9 @@ import { redirect } from 'next/navigation'
 const layout = async({children}:{children:React.ReactNode}) => {
     const session=await getServerSession(authOptions)
 
-        if(!session?.user){
-                redirect('/login')
-        }
+        // if(!session?.user){
+        //         redirect('/login')
+        // }
     let ctText
     if(session?.user){
         ctText="Logout"
