@@ -1,36 +1,197 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fullstack CMS with Notion as Backend 
 
-## Getting Started
+A modern **Fullstack CMS system** built with **Next.js App Router**, where **Notion acts as the backend CMS** instead of a traditional database.  
+This allows non-developers to manage content easily while developers focus on building fast, scalable frontends.
 
-First, run the development server:
+---
 
-```bash
+##  Features
+
+-  **Authentication with NextAuth**
+  - Google OAuth
+  - Email & Password login
+  - Forgot / Reset Password flow
+-  **Notion as a Headless CMS**
+  - No traditional backend or database
+  - Content managed directly from Notion
+-  **Dynamic Blog / Project Pages**
+  - Slug-based routing
+  - Pagination support
+-  **Rich Content Rendering**
+  - Supports headings, lists, code blocks, images, etc.
+-  **Search & Filtering**
+-  **SEO Friendly**
+  - Server Components for data fetching
+-  **Modern UI**
+  - Built with Tailwind CSS
+-  **Export Content as PDF**
+  - Option to hide header/footer in PDF view
+
+---
+
+##  Why Notion as Backend?
+
+Traditional CMS architecture:
+Frontend → API → Database → Admin Panel
+
+
+This project replaces that with:
+
+
+Frontend → Notion API → Notion Database
+
+
+### Benefits:
+- No need to build an admin dashboard
+- Content editors use Notion directly
+- Faster development
+- Clean separation of content and UI
+
+---
+
+## 🏗️ High-Level Architecture
+
+```txt
+┌──────────────┐
+│   Frontend   │  (Next.js App Router)
+│              │
+│  Server      │─── Fetch Data ──┐
+│  Components  │                 │
+│              │             ┌───▼─────────┐
+│  Client      │             │  Notion API │
+│  Components  │◀── Render ──│             │
+└──────────────┘             └───▲─────────┘
+                                   │
+                             ┌─────┴────────┐
+                             │ Notion DB    │
+                             │ (CMS Data)   │
+                             └──────────────┘
+
+Authentication Flow
+User → NextAuth → Google / Credentials → Session
+
+🧠 Data Flow
+
+Content is created in Notion Database
+
+Next.js Server Components fetch data via Notion API
+
+Pages are rendered using:
+
+Metadata from database (title, slug, cover, description)
+
+Body content from Notion blocks
+
+Client Components handle:
+
+Search
+
+Pagination
+
+UI interactions
+
+🛠️ Tech Stack
+Frontend
+
+Next.js (App Router)
+
+React
+
+TypeScript
+
+Tailwind CSS
+
+Authentication
+
+NextAuth
+
+Google OAuth
+
+Credentials Provider
+
+CMS / Backend
+
+Notion API
+
+Notion Databases
+
+Notion Blocks API
+
+Rendering
+
+Custom Notion block renderer
+
+(Optional) react-notion-x
+
+Utilities
+
+PDF export
+
+Pagination using cursors
+
+SEO metadata generation
+
+📂 Project Structure (Simplified)
+app/
+ ├─ (auth)/
+ │   ├─ login/
+ │   ├─ register/
+ │   └─ reset-password/
+ ├─ (dashboard)/
+ │   └─ track/[...slug]/
+ ├─ api/
+ │   └─ auth/
+ ├─ lib/
+ │   ├─ notion.ts
+ │   └─ auth.ts
+ ├─ components/
+ │   ├─ TrackCard.tsx
+ │   ├─ NotionRenderer.tsx
+ │   └─ SearchClient.tsx
+ ├─ globals.css
+ └─ layout.tsx
+
+📸 Screenshots
+
+Add screenshots here after deployment
+
+Home Page
+![Home Page](screenshots/home.png)
+
+Notion Content Rendering
+![Blog Page](screenshots/blog.png)
+
+Authentication
+![Login](screenshots/login.png)
+
+🔐 Environment Variables
+
+Create a .env file:
+
+🚀 Getting Started
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Visit: http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🌱 Future Improvements
 
-## Learn More
+Role-based access control
 
-To learn more about Next.js, take a look at the following resources:
+Draft / Published states
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Comments system
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Full-text search
 
-## Deploy on Vercel
+Notion page caching
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Admin analytics
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🧑‍💻 Author
+
+Anugrah RK

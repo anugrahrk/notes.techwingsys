@@ -8,7 +8,10 @@ const layout=async({children}:{children:React.ReactNode})=>{
               redirect('/login')
       }
     return(
-        {children}
+        <div>
+            {children}
+        </div>
+        
     )
 }
 export default layout
