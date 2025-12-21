@@ -49,126 +49,114 @@ Frontend → Notion API → Notion Database
 
 ---
 
-## 🏗️ High-Level Architecture
+## High-Level Architecture
 
-```txt
-┌──────────────┐
-│   Frontend   │  (Next.js App Router)
-│              │
-│  Server      │─── Fetch Data ──┐
-│  Components  │                 │
-│              │             ┌───▼─────────┐
-│  Client      │             │  Notion API │
-│  Components  │◀── Render ──│             │
-└──────────────┘             └───▲─────────┘
-                                   │
-                             ┌─────┴────────┐
-                             │ Notion DB    │
-                             │ (CMS Data)   │
-                             └──────────────┘
+![alt text](image.png)
 
-Authentication Flow
+## Authentication Flow
 User → NextAuth → Google / Credentials → Session
 
-🧠 Data Flow
+## Data Flow
 
 Content is created in Notion Database
-
+                |
 Next.js Server Components fetch data via Notion API
-
+                |
 Pages are rendered using:
-
+                |
 Metadata from database (title, slug, cover, description)
-
+                |
 Body content from Notion blocks
-
+                |
 Client Components handle:
-
+                |
 Search
-
+                |
 Pagination
-
+                |
 UI interactions
 
-🛠️ Tech Stack
-Frontend
+### Tech Stack
+## Frontend
 
-Next.js (App Router)
+- Next.js (App Router)
 
-React
+- React
 
-TypeScript
+- TypeScript
 
-Tailwind CSS
+- Tailwind CSS
 
-Authentication
+- Authentication
 
-NextAuth
+- NextAuth
 
-Google OAuth
+- Google OAuth
 
-Credentials Provider
+- Credentials Provider
 
-CMS / Backend
+## CMS / Backend
 
-Notion API
+- Notion API
 
-Notion Databases
+- Notion Databases
 
-Notion Blocks API
+- Notion Blocks API
 
-Rendering
+- Rendering
 
-Custom Notion block renderer
 
-(Optional) react-notion-x
-
-Utilities
+## Utilities
 
 PDF export
 
-Pagination using cursors
-
 SEO metadata generation
 
-📂 Project Structure (Simplified)
-app/
- ├─ (auth)/
- │   ├─ login/
- │   ├─ register/
- │   └─ reset-password/
- ├─ (dashboard)/
- │   └─ track/[...slug]/
- ├─ api/
- │   └─ auth/
- ├─ lib/
- │   ├─ notion.ts
- │   └─ auth.ts
- ├─ components/
- │   ├─ TrackCard.tsx
- │   ├─ NotionRenderer.tsx
- │   └─ SearchClient.tsx
- ├─ globals.css
- └─ layout.tsx
+## Project Structure (Simplified)
+        app/
+        ├─ (auth)/
+        │   ├─ login/
+        │   ├─ register/
+        │   └─ reset-password/
+        ├─ (dashboard)/
+        |   ├─ dashboard/
+        │   └─ track/[...slug]/
+        ├─ api/
+        |   ├─ auth/
+        |   ├─ notion-test/
+        |   ├─ pdf/
+        │   └─ auth/
+        ├─ lib/
+        │   ├─ notion.ts
+        │   └─ auth.ts
+        ├─ components/
+        │   ├─ TrackCard.tsx
+        │   ├─ NotionRenderer.tsx
+        │   └─ SearchClient.tsx
+        ├─ globals.css
+        ├─ page.tsx
+        └─ layout.tsx
 
-📸 Screenshots
+## Screenshots
 
-Add screenshots here after deployment
+- Home Page
+![alt text](image-1.png)
 
-Home Page
-![Home Page](screenshots/home.png)
+- Notion Content Rendering
+![alt text](image-2.png)
 
-Notion Content Rendering
-![Blog Page](screenshots/blog.png)
+- Authentication
+![alt text](image-3.png)
 
-Authentication
-![Login](screenshots/login.png)
+- Forgot password
+![alt text](image-4.png)
 
-🔐 Environment Variables
+## Environment Variables
 
 Create a .env file:
+- add .env.example variables and replace with your keys
 
-🚀 Getting Started
+### Getting Started
 # Install dependencies
 npm install
 
@@ -176,22 +164,22 @@ npm install
 npm run dev
 
 
-Visit: http://localhost:3000
+Visit: 
 
-🌱 Future Improvements
+## Future Improvements
 
-Role-based access control
+- Role-based access control
 
-Draft / Published states
+- Pagination
 
-Comments system
+- Comments system
 
-Full-text search
+- Full-text search
 
-Notion page caching
+- Notion page caching
 
-Admin analytics
+- Admin analytics
 
-🧑‍💻 Author
+# Author
 
 Anugrah RK
