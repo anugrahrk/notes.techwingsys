@@ -65,15 +65,10 @@ Next.js Server Components fetch data via Notion API
 Pages are rendered using:
                 |
 Metadata from database (title, slug, cover, description)
-                |
 Body content from Notion blocks
-                |
 Client Components handle:
-                |
 Search
-                |
 Pagination
-                |
 UI interactions
 
 ### Tech Stack
