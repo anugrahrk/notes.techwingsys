@@ -15,6 +15,7 @@ import {
   PopoverTrigger,
 } from '../../popover';
 import { cn } from '../../../../lib/utils';
+import { useRouter } from 'next/navigation';
 
 // Hamburger icon component
 const HamburgerIcon = ({ className, ...props }: React.SVGAttributes<SVGElement>) => (
@@ -93,6 +94,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar01Props>(
   ) => {
     const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef<HTMLElement>(null);
+    const router=useRouter()
 
     useEffect(() => {
       const checkWidth = () => {
@@ -173,7 +175,9 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar01Props>(
             {/* Main nav */}
             <div className="flex items-center gap-6">
               <button 
-                onClick={(e) => e.preventDefault()}
+                onClick={(e) => {e.preventDefault()
+                router.push('/dashboard')
+                }}
                 className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
                 <span className=" font-bold text-xl sm:inline-block">projects.io</span>

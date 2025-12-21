@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <Providers>
           <div className="h-screen">
-            <BackgroundRippleEffect/>
+            <BackgroundRippleEffect className="no-print"/>
           {children}
           </div>
         </Providers>

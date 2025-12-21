@@ -13,13 +13,13 @@ export default function Appbar({ctaText}:{ctaText:string}){
         if (ctaText=="Login"){
         router.push('/login')
     }else{
-        signOut({callbackUrl:"/login"})
+        signOut({callbackUrl:"/dashboard"})
     }
     }
-    
+// if you need hamburger then make hamburger true
   return (
-    <div>
-        {pathname.startsWith("/track")?<Navbar01 hamburger={true} ctaText={ctaText} onCtaClick={Sign}/>:<Navbar01 hamburger={false} ctaText={ctaText} onCtaClick={Sign}/>}
+    <div className="no-print">
+        {pathname.startsWith("/track")?<Navbar01 hamburger={false} ctaText={ctaText} onCtaClick={Sign}/>:<Navbar01 hamburger={false} ctaText={ctaText} onCtaClick={Sign}/>}
         </div>
   )
 

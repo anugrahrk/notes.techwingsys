@@ -1,22 +1,15 @@
-import { authOptions } from "@/app/lib/auth"
-import { Trackpage } from "@/components/trackpage"
-import { getServerSession } from "next-auth"
-import { redirect } from "next/navigation";
+import { getBlogBySlug } from "../../../lib/get-blogbyslug"
+import { NotionBlockRenderer } from "@/components/notionRenderer"
 
-// interface Pageparams{
-//   params:Promise<{trackid:string}>
-// }
 
-async function page() {
-  const session=await getServerSession(authOptions)
-  // const trackid=await params
+export default async function BlogDetail({params}:{params:Promise<{trackid:string}>}) {
+  const blog = await getBlogBySlug((await params).trackid[0])
+  if (!blog) return <div>Not found</div>
 
-        if(!session?.user){
-          redirect('/login')
-        }
   return (
-    <div><Trackpage content={"hello"}/></div>
+    <article className="prose mx-auto py-10 md:w-1/2 w-3/4 ">
+      <NotionBlockRenderer blocks={blog.body} />
+
+    </article>
   )
 }
-
-export default page
