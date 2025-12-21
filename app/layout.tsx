@@ -4,6 +4,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,7 @@ export default function RootLayout({
       >
         <Providers>
           <div className="h-screen">
-          <Analytics/>
+          <Analytics/><SpeedInsights/>
             <BackgroundRippleEffect className="no-print"/>
           {children}
           </div>
