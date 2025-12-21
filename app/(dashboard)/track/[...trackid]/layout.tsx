@@ -1,8 +1,15 @@
+import { authOptions } from '@/app/lib/auth'
 import { Footer } from '@/components/footer'
-import React from 'react'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 
-const layout = async({children,params}:{children:React.ReactNode,params:Promise<{trackid:string}>}) => {
+
+const layout = async({children,params}:{children:React.ReactNode,params:Promise<{trackid:string[]}>}) => {
   const slug=(await params).trackid[0]
+  const session=await getServerSession(authOptions)
+      if(!session?.user){
+              redirect('/login')
+      }
   return (
     <div>
         {children}

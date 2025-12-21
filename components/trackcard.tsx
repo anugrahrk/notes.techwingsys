@@ -1,6 +1,6 @@
 // app/components/TrackCard.tsx
 "use client" // This must be at the very top of the file
-import { Card, CardHeader, CardDescription, CardTitle, CardFooter, CardContent } from '@/components/ui/card'
+import { Card, CardHeader, CardDescription, CardTitle, CardFooter } from '@/components/ui/card'
 // import { useRouter } from 'next/navigation' // Correct import for App Router
 import { Button } from './ui/button'
 import Link from 'next/link'

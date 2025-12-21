@@ -1,6 +1,5 @@
 "use server"
 import { prisma } from "@/lib/prisma"
-import { NextResponse } from "next/server"
 import crypto from 'crypto'
 import bcrypt from 'bcryptjs'
 import sendMail from "@/app/lib/mailer"

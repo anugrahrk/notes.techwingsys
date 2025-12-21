@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card } from './ui/card'
 import { Input } from './ui/input'
 import CardOutlineDemo from './searchcard'

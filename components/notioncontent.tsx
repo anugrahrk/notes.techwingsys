@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const Notioncontent = ({heading,description}:{heading:string,description:string}) => {
   return (
     <section className="py-10">

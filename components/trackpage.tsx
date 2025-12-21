@@ -1,6 +1,5 @@
 
 import { notionRef } from '@/app/lib/notion'
-import { Footer } from './footer'
 import { Notioncontent } from './notioncontent'
 
 interface BlogType{
@@ -18,7 +17,6 @@ export const Trackpage =async ({slug}:{slug:string}) => {
     <div className='w-full min-h-screen relative'>
     {blogItem&&<Notioncontent description={blogItem.description} heading={blogItem.title} key={blogItem.id}/>}
     <div className=' fixed bottom-3 left-3'>
-    <Footer/>
     </div>
     
     </div>
