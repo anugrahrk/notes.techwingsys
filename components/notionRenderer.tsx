@@ -33,7 +33,7 @@ export function NotionBlockRenderer({ blocks }: { blocks: any[] }) {
           case "heading_1":
             return <h1 key={id} className="text-4xl font-bold mt-8 mb-4">{renderRichText(block.heading_1.rich_text)}</h1>;
           case "divider":
-            return <div></div>
+            return <div key={id}></div>
           
           case "heading_2":
             return <h2 key={id} className="text-2xl font-semibold mt-6 mb-3">{renderRichText(block.heading_2.rich_text)}</h2>;
@@ -65,9 +65,6 @@ export function NotionBlockRenderer({ blocks }: { blocks: any[] }) {
           case "image":
             const url = block.image.type === "external" ? block.image.external.url : block.image.file.url;
             return <img key={id} src={url} alt="Notion Image" className="rounded-lg border border-gray-700 my-6" />;
-
-          case "divider":
-            return <hr key={id} className="border-gray-800 my-8" />;
 
           case "table":
             return (
