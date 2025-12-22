@@ -1,5 +1,4 @@
 "use server"
-
 export async function notionRef (cursor?: string) {
   const dataSourceId = process.env.NOTION_DATA_SOURCE_ID!
 
@@ -13,8 +12,6 @@ export async function notionRef (cursor?: string) {
         "Notion-Version": "2025-09-03",
       },
       body: JSON.stringify({
-        page_size: 1,
-        start_cursor: cursor,
         filter: {
           property: "Published",
           checkbox: { equals: true },

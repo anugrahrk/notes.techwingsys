@@ -1,6 +1,4 @@
 "use server"
-
-
 export async function getBlogBody(pageId: string) {
   let blocks: any[] = []
   let cursor: string | undefined = undefined
@@ -29,6 +27,15 @@ export async function getBlogBody(pageId: string) {
     if (!data.has_more) break
     cursor = data.next_cursor
   }
+  const blocksWithChildren:any = await Promise.all(
+    blocks.map(async (block) => {
+      if (block.has_children && !block[block.type].children) {
+        const children = await getBlogBody(block.id);
+        return { ...block, children }; 
+      }
+      return block;
+    })
+  );
 
-  return blocks
+  return blocksWithChildren
 }

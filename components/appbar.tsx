@@ -18,7 +18,7 @@ export default function Appbar({ctaText}:{ctaText:string}){
     }
 // if you need hamburger then make hamburger true
   return (
-    <div className="no-print">
+    <div className="no-print fixed w-full z-500 top-0">
         {pathname.startsWith("/track")?<Navbar01 hamburger={false} ctaText={ctaText} onCtaClick={Sign}/>:<Navbar01 hamburger={false} ctaText={ctaText} onCtaClick={Sign}/>}
         </div>
   )

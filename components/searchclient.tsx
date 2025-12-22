@@ -14,20 +14,20 @@ interface BlogType {
 
 export default function SearchClient({ blogs }: { blogs: BlogType[] }) {
   const [search, setSearch] = useState("")
-
   const filteredBlogs = blogs.filter(blog =>
     blog.title.toLowerCase().includes(search.toLowerCase())
   )
+  console.log(filteredBlogs)
 
   return (
-    <div className="p-3 flex-wrap md:mx-20 md:my-10">
-      <div className="flex justify-center pb-4">
+    <div className="p-3 flex-wrap md:mx-20 my-20">
+      <div className="flex justify-center ">
         <span className="text-2xl font-medium text-gray-600">Welcome to</span>
       </div>
 
       <div className="flex justify-center pb-4">
         <span className="md:text-6xl text-4xl font-extrabold">
-          Projects <span className="text-blue-500">.</span> io
+          notes <span className="text-blue-500 ">.</span> io
         </span>
       </div>
 
@@ -40,7 +40,7 @@ export default function SearchClient({ blogs }: { blogs: BlogType[] }) {
         />
       </div>
 
-      <div className="flex flex-wrap gap-4 pt-4">
+      <div className="flex  gap-4 pt-4 justify-center flex-wrap">
         {filteredBlogs.map(blog => (
           <TrackCard
             key={blog.id}
