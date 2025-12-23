@@ -17,7 +17,6 @@ export default function SearchClient({ blogs }: { blogs: BlogType[] }) {
   const filteredBlogs = blogs.filter(blog =>
     blog.title.toLowerCase().includes(search.toLowerCase())
   )
-  console.log(filteredBlogs)
 
   return (
     <div className="p-3 flex-wrap md:mx-20 my-20">

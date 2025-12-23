@@ -6,7 +6,7 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism"
 export const Codecomponent = ({id,language,code}:{id:string,language:string,code:string}) => {
     const [copied,setCopied]=useState(false)
   return (
-   <div key={id} className="relative my-6 -z-40">
+   <div key={id} className="relative my-6">
       <SyntaxHighlighter
         language={language}
         style={oneDark}

@@ -1,7 +1,7 @@
-// app/components/TrackCard.tsx
-"use client" // This must be at the very top of the file
-import { Card, CardHeader, CardDescription, CardTitle, CardFooter } from '@/components/ui/card'
-// import { useRouter } from 'next/navigation' // Correct import for App Router
+
+"use client" 
+import { Card, CardHeader, CardTitle, CardFooter } from '@/components/ui/card'
+// import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -11,8 +11,6 @@ const TrackCard = ({id, title, cover, slug }: { id:number,title: string, cover?:
   const [loading,setLoading]=useState(true)
 
   // const handleExplore = () => {
-  //   // No need for event object or e.preventDefault() here.
-  //   // We are simply telling the router to navigate.
   //   router.push(`/track/123`)
   // }
 
@@ -30,7 +28,6 @@ const TrackCard = ({id, title, cover, slug }: { id:number,title: string, cover?:
         <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardFooter className='gap-3 max-sm:flex-col max-sm:items-stretch'>
-        {/* Pass the function reference directly */}
         <Link href={`/track/${slug}`}><Button type='button'>Explore</Button></Link>
       </CardFooter>
     </Card>
