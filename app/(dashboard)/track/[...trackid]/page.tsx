@@ -9,7 +9,6 @@ export default async function BlogDetail({params}:{params:Promise<{trackid:strin
   return (
     <article className="prose mx-auto py-10 md:w-1/2 w-3/4 ">
       <NotionBlockRenderer blocks={blog.body} />
-
     </article>
   )
 }

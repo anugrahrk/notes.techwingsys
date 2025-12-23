@@ -17,9 +17,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Notes",
-  description: "This a cms or notes app for Techwingsys kochi",
-};
+  title: {
+    default: "Techwingsys Notes | Free Technical Learning Paths",
+    template: "%s | Techwingsys"
+  },
+  description: "Techwingsys provides comprehensive notes and progress tracking for MongoDB, JavaScript, and modern web development.",
+  keywords: ["Techwingsys", "Techwings notes","Techwings","kochi", "MongoDB notes", "programming roadmaps"], 
+  authors: [{ name: "Techwingsys" }],
+  openGraph: {
+    title: "Techwingsys Notes",
+    description: "Master tech stacks with Techwingsys progress tracking.",
+    url: "https://notes-techwingsys.vercel.app",
+    siteName: "Techwingsys",
+    type: "website",
+  },
+}
 
 export default function RootLayout({
   children,
