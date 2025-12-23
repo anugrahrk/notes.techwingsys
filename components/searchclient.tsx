@@ -22,6 +22,7 @@ export default function SearchClient({ blogs }: { blogs: BlogType[] }) {
     <div className="p-3 flex-wrap md:mx-20 my-20">
       <div className="flex justify-center ">
         <span className="text-2xl font-medium text-gray-600">Welcome to</span>
+        <div className="sr-only">Techwingsys kochi</div>
       </div>
 
       <div className="flex justify-center pb-4">
