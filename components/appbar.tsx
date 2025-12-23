@@ -13,7 +13,7 @@ export default function Appbar({ctaText}:{ctaText:string}){
         if (ctaText=="Login"){
         router.push('/login')
     }else{
-        signOut({callbackUrl:"/dashboard"})
+        signOut({callbackUrl:"/"})
     }
     }
 // if you need hamburger then make hamburger true

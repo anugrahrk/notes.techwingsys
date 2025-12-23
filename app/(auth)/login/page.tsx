@@ -27,7 +27,7 @@ export default function CardDemo() {
   const { data: session, status } = useSession()
   useEffect(() => {
     if (status === "authenticated") {
-      router.push('/dashboard')
+      router.push('/')
     }
   }, [status, router])
 

@@ -175,7 +175,7 @@ export const Navbar01 = React.forwardRef<HTMLElement, Navbar01Props>(
             <div className="flex items-center gap-6">
               <button 
                 onClick={(e) => {e.preventDefault()
-                router.push('/dashboard')
+                router.push('/')
                 }}
                 className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors cursor-pointer"
               >
