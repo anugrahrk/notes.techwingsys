@@ -10,7 +10,7 @@ export function NotionBlockRenderer({ blocks }: { blocks: any[] }) {
       ${annotations.italic ? "italic" : ""}
       ${annotations.strikethrough ? "line-through" : ""}
       ${annotations.underline ? "underline" : ""}
-      ${annotations.code ? "text-black px-1.5 py-0.5 font-semibold  " : ""}
+      ${annotations.code ? "text-gray-500 px-1.5 py-0.5 font-semibold  " : ""}
     `;
 
     if (href) {
@@ -42,7 +42,7 @@ export function NotionBlockRenderer({ blocks }: { blocks: any[] }) {
             return <h3 key={id} className="text-xl font-medium mt-4 mb-2">{renderRichText(block.heading_3.rich_text)}</h3>;
 
           case "paragraph":
-            return <p key={id} className="leading-7 text-black">{renderRichText(block.paragraph.rich_text)}</p>;
+            return <p key={id} className="leading-7 text-gray-500">{renderRichText(block.paragraph.rich_text)}</p>;
 
           case "bulleted_list_item":
             return (
@@ -69,7 +69,7 @@ export function NotionBlockRenderer({ blocks }: { blocks: any[] }) {
           case "table":
             return (
               <div key={id} className="my-6 overflow-x-auto border border-black">
-                <table className="w-full text-left border-collapse bg-slate-800">
+                <table className="w-full text-left border-collapse bg-slate-800 text-white">
                   <tbody className="divide-y divide-white">
                     {block.children?.map((row: any) => (
                       <tr key={row.id} className="divide-x divide-white">
